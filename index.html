@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="rw" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BevoFilms - Agasobanuye mu Kinyarwanda</title>
+    <!-- Custom Neon Hexagonal Prism Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2322c55e'/%3E%3Cstop offset='35%25' stop-color='%2306b6d4'/%3E%3Cstop offset='70%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23f43f5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='120' height='120' rx='28' fill='%230b0f19'/%3E%3Cpolygon points='60,10 105,35 105,85 60,110 15,85 15,35' fill='url(%23g)' stroke='%23ffffff' stroke-width='3'/%3E%3Cpolygon points='60,36 81,48 81,72 60,84 39,72 39,48' fill='%230b0f19'/%3E%3Cpolygon points='60,47 71,53.5 71,66.5 60,73 49,66.5 49,53.5' fill='none' stroke='url(%23g)' stroke-width='2.5'/%3E%3C/svg%3E">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slateDark: '#0f172a',
+                        slateCard: '#161b26',
+                        slateHover: '#1e2534',
+                        crimson: '#e11d48',
+                        crimsonDark: '#be123c',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: 84px;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.22s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-crimson selection:text-white">
+
+    <!-- ==================== TOP HEADER & LOGO ==================== -->
+    <header class="sticky top-0 z-40 bg-[#0b0f19]/95 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+        <div class="max-w-5xl mx-auto flex items-center justify-between gap-3">
+            <!-- Custom Glowing Neon Rainbow Hexagonal Prism Logo & BevoFilms Brand Title -->
+            <div onclick="switchTab('home')" class="flex items-center gap-2.5 cursor-pointer select-none group">
+                <div class="w-10 h-10 rounded-xl bg-[#07090f] flex items-center justify-center shadow-[0_0_16px_rgba(6,182,212,0.35)] border border-slate-800/90 group-hover:scale-105 transition-transform duration-200 shrink-0">
+                    <svg viewBox="0 0 120 120" class="w-8 h-8 overflow-visible" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <!-- Soft Neon Bloom Filter -->
+                            <filter id="neonPrismGlow" x="-25%" y="-25%" width="150%" height="150%">
+                                <feGaussianBlur stdDeviation="2.2" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                            <!-- Facet Gradients matching the uploaded rainbow prism -->
+                            <linearGradient id="facetTopLeft" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#4ade80" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                            <linearGradient id="facetTopCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#22d3ee" />
+                                <stop offset="100%" stop-color="#0284c7" />
+                            </linearGradient>
+                            <linearGradient id="facetTopRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#38bdf8" />
+                                <stop offset="100%" stop-color="#2563eb" />
+                            </linearGradient>
+                            <linearGradient id="facetUpperRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="100%" stop-color="#6366f1" />
+                            </linearGradient>
+                            <linearGradient id="facetLowerRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7c3aed" />
+                                <stop offset="100%" stop-color="#c026d3" />
+                            </linearGradient>
+                            <linearGradient id="facetBottomRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#e11d48" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                            <linearGradient id="facetBottomCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f97316" />
+                                <stop offset="100%" stop-color="#ef4444" />
+                            </linearGradient>
+                            <linearGradient id="facetBottomLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#facc15" />
+                                <stop offset="100%" stop-color="#ea580c" />
+                            </linearGradient>
+                            <linearGradient id="facetLowerLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#a3e635" />
+                                <stop offset="100%" stop-color="#facc15" />
+                            </linearGradient>
+                            <linearGradient id="facetUpperLeft" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#84cc16" />
+                                <stop offset="100%" stop-color="#10b981" />
+                            </linearGradient>
+                            <linearGradient id="innerRingStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4ade80" />
+                                <stop offset="33%" stop-color="#22d3ee" />
+                                <stop offset="66%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#f43f5e" />
+                            </linearGradient>
+                        </defs>
+
+                        <g filter="url(#neonPrismGlow)" stroke-linejoin="round" stroke-linecap="round">
+                            <!-- Outer Luminous Faceted Triangular Ring -->
+                            <polygon points="60,8 41,37 15,34" fill="url(#facetTopLeft)" stroke="#a7f3d0" stroke-width="1.8" />
+                            <polygon points="60,8 79,37 41,37" fill="url(#facetTopCenter)" stroke="#bae6fd" stroke-width="1.8" />
+                            <polygon points="60,8 105,34 79,37" fill="url(#facetTopRight)" stroke="#bfdbfe" stroke-width="1.8" />
+                            <polygon points="105,34 105,60 79,37" fill="url(#facetUpperRight)" stroke="#c7d2fe" stroke-width="1.8" />
+                            <polygon points="105,34 83,60 79,37" fill="#1d4ed8" stroke="#c7d2fe" stroke-width="1.8" />
+                            <polygon points="105,60 105,86 83,60" fill="url(#facetLowerRight)" stroke="#e9d5ff" stroke-width="1.8" />
+                            <polygon points="105,86 78,83 83,60" fill="#9333ea" stroke="#f5d0fe" stroke-width="1.8" />
+                            <polygon points="105,86 60,112 78,83" fill="url(#facetBottomRight)" stroke="#fbcfe8" stroke-width="1.8" />
+                            <polygon points="78,83 60,112 42,83" fill="url(#facetBottomCenter)" stroke="#fecaca" stroke-width="1.8" />
+                            <polygon points="60,112 15,86 42,83" fill="url(#facetBottomLeft)" stroke="#fed7aa" stroke-width="1.8" />
+                            <polygon points="15,86 37,60 42,83" fill="#f59e0b" stroke="#fef08a" stroke-width="1.8" />
+                            <polygon points="15,86 15,60 37,60" fill="url(#facetLowerLeft)" stroke="#fef08a" stroke-width="1.8" />
+                            <polygon points="15,60 15,34 37,60" fill="url(#facetUpperLeft)" stroke="#d9f99d" stroke-width="1.8" />
+                            <polygon points="15,34 41,37 37,60" fill="#16a34a" stroke="#bbf7d0" stroke-width="1.8" />
+
+                            <!-- Dark Inner Hexagonal Core -->
+                            <polygon points="41,37 79,37 83,60 78,83 42,83 37,60" fill="#090c14" stroke="#ffffff" stroke-width="1.6" stroke-opacity="0.85" />
+
+                            <!-- Subtle Glowing Rainbow Inner Hexagon Outline -->
+                            <polygon points="60,46 72,53 72,67 60,74 48,67 48,53" fill="none" stroke="url(#innerRingStroke)" stroke-width="1.6" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="flex items-baseline tracking-tight">
+                    <span class="text-2xl font-black text-crimson">Bevo</span>
+                    <span class="text-2xl font-black text-white">Films</span>
+                </div>
+            </div>
+
+            <!-- Search Toggle & Library Quick Counter -->
+            <div class="flex items-center gap-2.5">
+                <button onclick="toggleSearchBar()" aria-label="Search" class="w-10 h-10 rounded-xl bg-slateCard border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-slate-700 active:scale-95 transition">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+                <button onclick="switchTab('library')" class="bg-crimson hover:bg-crimsonDark text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-md shadow-rose-600/20 active:scale-95 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Library (<span id="headerSavedCount">0</span>)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Expandable Search Bar -->
+        <div id="searchBarBox" class="hidden max-w-5xl mx-auto mt-3">
+            <div class="relative flex items-center">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-sm"></i>
+                <input 
+                    type="text" 
+                    id="globalSearchInput" 
+                    oninput="handleGlobalSearch(this.value)"
+                    placeholder="Shakisha filime, series cyangwa umusobanuzi (urugero: Rocky, Outer Banks)..." 
+                    class="w-full bg-slateCard text-white text-sm rounded-xl pl-10 pr-10 py-3 border border-slate-700 focus:outline-none focus:border-crimson placeholder-slate-500"
+                >
+                <button onclick="clearGlobalSearch()" id="clearSearchIcon" class="hidden absolute right-3 text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="flex-1 max-w-5xl w-full mx-auto px-4 pt-4">
+
+        <!-- SEARCH RESULTS VIEW -->
+        <section id="view-search" class="hidden fade-in space-y-5">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-white">Ibisubizo by'ishakisha</h2>
+                <button onclick="clearGlobalSearch()" class="text-xs font-semibold text-crimson hover:underline">Funga</button>
+            </div>
+            <div id="searchInterpretersGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+            <div id="searchMediaGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+            <div id="searchEmptyState" class="hidden text-center py-12 text-slate-400">
+                <i class="fa-solid fa-film text-3xl mb-2 text-slate-600"></i>
+                <p class="text-sm">Nta filime cyangwa umusobanuzi bibonetse.</p>
+            </div>
+        </section>
+
+        <!-- TAB 1: HOME -->
+        <section id="view-home" class="fade-in space-y-6">
+            <!-- Featured Banner -->
+            <div class="relative rounded-2xl overflow-hidden bg-slateCard border border-slate-800 shadow-2xl">
+                <div class="aspect-[16/10] sm:aspect-[21/9] w-full relative">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Outer Banks" 
+                         class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/60 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 flex flex-col items-start">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-crimson text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md">Trending</span>
+                            <span class="bg-slate-900/80 backdrop-blur-sm text-slate-200 text-xs font-medium px-2.5 py-0.5 rounded-md border border-slate-700">By Sankara Da Premier</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-1">Outer Banks</h1>
+                        <p class="text-slate-300 text-xs sm:text-sm line-clamp-2 max-w-xl mb-4">
+                            Itsinda ry'urubyiruko rishakisha zahabu yabuze mu nyanja mu gihe bahigwa n'abantu bakomeye bafite intwaro.
+                        </p>
+                        <div class="flex items-center gap-2.5">
+                            <button onclick="openPlayer(1)" class="bg-crimson hover:bg-crimsonDark text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-rose-600/30 flex items-center gap-2 active:scale-95 transition">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Play Now</span>
+                            </button>
+                            <button onclick="toggleLibrary(1)" class="bg-slate-800/90 hover:bg-slate-700 text-white font-semibold text-sm px-4 py-2.5 rounded-xl border border-slate-700 active:scale-95 transition">
+                                <i class="fa-solid fa-plus mr-1"></i> Library
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Top Interpreters Row -->
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-microphone-lines text-crimson"></i>
+                        <span>Top Abasobanuzi</span>
+                    </h2>
+                    <button onclick="switchTab('interpret')" class="text-xs font-semibold text-crimson hover:underline">Reba Bose &rarr;</button>
+                </div>
+                <div id="homeInterpretersRow" class="flex gap-3 overflow-x-auto no-scrollbar pb-1"></div>
+            </div>
+
+            <!-- All Recent Releases -->
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-base font-bold text-white">Filime & Series Ziheruka</h2>
+                    <span class="text-xs text-slate-400">Agasobanuye HD</span>
+                </div>
+                <div id="homeMediaGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+            </div>
+        </section>
+
+        <!-- TAB 2: MOVIES -->
+        <section id="view-movies" class="hidden fade-in space-y-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-extrabold text-white">Movies (Filime)</h1>
+                <span id="moviesBadgeCount" class="text-xs bg-slateCard border border-slate-800 px-3 py-1 rounded-full text-slate-300"></span>
+            </div>
+            <div id="moviesTabGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+        </section>
+
+        <!-- TAB 3: SERIES -->
+        <section id="view-series" class="hidden fade-in space-y-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-extrabold text-white">Series Zisobanuye</h1>
+                <span id="seriesBadgeCount" class="text-xs bg-slateCard border border-slate-800 px-3 py-1 rounded-full text-slate-300"></span>
+            </div>
+            <div id="seriesTabGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+        </section>
+
+        <!-- TAB 4: INTERPRET (ABASOBANUZI - UPDATED 2-COLUMN RANKED GRID) -->
+        <section id="view-interpret" class="hidden fade-in space-y-4">
+            <!-- Default Ranked Grid Header -->
+            <div id="interpretDefaultHeader" class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl font-extrabold text-white">Abasobanuzi (Interpret)</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Hitamo umusobanuzi urebe filime na series ze zose</p>
+                </div>
+                <span class="text-xs bg-slateCard border border-slate-800 px-3 py-1.5 rounded-full text-crimson font-bold">Top 8</span>
+            </div>
+
+            <!-- 2-Column Ranked Cards Grid -->
+            <div id="interpretRankedGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Filtered Interpreter Detail View (Shown when an interpreter card is clicked) -->
+            <div id="interpretDetailView" class="hidden space-y-4">
+                <button onclick="resetInterpreterView()" class="inline-flex items-center gap-2 text-xs font-bold text-slate-200 hover:text-white bg-slateCard border border-slate-800 px-3.5 py-2.5 rounded-xl active:scale-95 transition">
+                    <i class="fa-solid fa-arrow-left text-crimson"></i>
+                    <span>Subira ku basobanuzi bose</span>
+                </button>
+
+                <div id="selectedInterpreterCard" class="bg-slateCard border border-slate-800 rounded-2xl p-4 flex items-center gap-4 shadow-lg">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="flex items-center justify-between pt-1">
+                    <h2 class="text-base font-bold text-white">Filime na Series Yasobanuye</h2>
+                    <span id="filteredMediaCount" class="text-xs text-slate-400"></span>
+                </div>
+
+                <div id="filteredInterpreterMediaGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: LIBRARY (SAVED MOVIES/SERIES) -->
+        <section id="view-library" class="hidden fade-in space-y-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-extrabold text-white">My Library</h1>
+                <span id="libraryBadgeCount" class="text-xs bg-slateCard border border-slate-800 px-3 py-1 rounded-full text-slate-300">0 Saved</span>
+            </div>
+            <div id="libraryTabGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+            <div id="libraryEmptyState" class="text-center py-14 bg-slateCard/50 border border-slate-800/80 rounded-2xl">
+                <i class="fa-regular fa-bookmark text-3xl text-slate-600 mb-2"></i>
+                <p class="text-sm font-semibold text-slate-300">Library yawe irimo ubusa</p>
+                <p class="text-xs text-slate-500 mt-1">Kanda ku kimenyetso cya Bookmark kuri filime kugira ngo uyibike hano.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== BOTTOM NAVIGATION BAR ==================== -->
+    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#0b0f19]/95 backdrop-blur-lg border-t border-slate-800/90 px-2 py-2">
+        <div class="max-w-lg mx-auto grid grid-cols-5 gap-1">
+            <button onclick="switchTab('home')" id="tab-btn-home" class="bottom-nav-btn flex flex-col items-center justify-center py-1 text-crimson transition">
+                <i class="fa-solid fa-house text-lg mb-1"></i>
+                <span class="text-[11px] font-bold">Home</span>
+            </button>
+            <button onclick="switchTab('movies')" id="tab-btn-movies" class="bottom-nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-film text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Movies</span>
+            </button>
+            <button onclick="switchTab('series')" id="tab-btn-series" class="bottom-nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-tv text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Series</span>
+            </button>
+            <button onclick="switchTab('interpret')" id="tab-btn-interpret" class="bottom-nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-microphone-lines text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Interpret</span>
+            </button>
+            <button onclick="switchTab('library')" id="tab-btn-library" class="bottom-nav-btn flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-bookmark text-lg mb-1"></i>
+                <span class="text-[11px] font-medium">Library</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== INTEGRATED VIDEO PLAYER MODAL ==================== -->
+    <div id="playerModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+        <div class="bg-slateCard border border-slate-800 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]">
+            <!-- Player Top Bar -->
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800">
+                <div class="flex items-center gap-2 truncate pr-2">
+                    <span id="playerTypeTag" class="bg-crimson text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">Movie</span>
+                    <h3 id="playerMediaTitle" class="text-white font-bold text-sm sm:text-base truncate">Movie Title</h3>
+                </div>
+                <button onclick="closePlayer()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Video Viewport -->
+            <div class="relative w-full aspect-video bg-black flex items-center justify-center">
+                <video id="playerIframe" class="hidden w-full h-full bg-black" controls playsinline preload="metadata"></video>
+                
+                <!-- Preview / Stream Simulator when Google Drive URL is empty -->
+                <div id="playerFallbackBox" class="w-full h-full relative flex flex-col items-center justify-center text-center p-4">
+                    <img id="playerBackdropImg" src="" alt="Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                    <div class="relative z-10 flex flex-col items-center">
+                        <button onclick="startStreamSimulation()" class="w-16 h-16 rounded-full bg-crimson hover:bg-crimsonDark text-white flex items-center justify-center text-2xl shadow-xl shadow-rose-600/40 active:scale-95 transition mb-3">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </button>
+                        <p id="playerStatusMsg" class="text-white font-bold text-sm">Kanda Play utangire kureba</p>
+                        <p class="text-slate-400 text-xs mt-1 max-w-md">Shyiramo Google Drive link (/preview) muri data ya filime kugira ngo ikine ako kanya.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details & Episode Selector -->
+            <div class="p-4 overflow-y-auto space-y-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-slate-400">Umusobanuzi:</span>
+                        <span id="playerInterpreterTag" class="text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2.5 py-1 rounded-lg">Rocky Kimomo</span>
+                    </div>
+                    <button id="playerSaveBtn" onclick="" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                        <i class="fa-regular fa-bookmark mr-1"></i> Bika muri Library
+                    </button>
+                </div>
+
+                <p id="playerDescriptionText" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+
+                <!-- Episodes List (For Series) -->
+                <div id="playerEpisodesSection" class="hidden pt-2 border-t border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Episodes</h4>
+                    <div id="playerEpisodesButtons" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DATA & APPLICATION LOGIC ==================== -->
+    <script>
+        /**
+         * 1. ABASOBANUZI DATA (INTERPRETERS)
+         * Matching the exact 8 ranked interpreters with verified green badges & crimson rank numbers
+         */
+        const interpreters = [
+            {
+                id: "rocky",
+                rank: "#1",
+                name: "Rocky Kimomo",
+                count: "478 filime na series",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+                initials: "RK",
+                avatarBg: "bg-rose-600",
+                verified: true
+            },
+            {
+                id: "sankara",
+                rank: "#2",
+                name: "Sankara Da Premier",
+                count: "257 filime na series",
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+                initials: "SD",
+                avatarBg: "bg-blue-600",
+                verified: true
+            },
+            {
+                id: "perfect",
+                rank: "#3",
+                name: "Perfect",
+                count: "239 filime na series",
+                image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=300&q=80",
+                initials: "PF",
+                avatarBg: "bg-pink-600",
+                verified: true
+            },
+            {
+                id: "bthegreat",
+                rank: "#4",
+                name: "B The Great",
+                count: "218 filime na series",
+                image: "", // Uses BT initials avatar
+                initials: "BT",
+                avatarBg: "bg-gradient-to-br from-emerald-500 to-teal-700",
+                verified: true
+            },
+            {
+                id: "gaheza",
+                rank: "#5",
+                name: "Gaheza Simba",
+                count: "209 filime na series",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+                initials: "GS",
+                avatarBg: "bg-amber-600",
+                verified: true
+            },
+            {
+                id: "kim",
+                rank: "#6",
+                name: "Kim",
+                count: "157 filime na series",
+                image: "", // Uses K initials avatar
+                initials: "K",
+                avatarBg: "bg-gradient-to-br from-red-700 to-rose-900",
+                verified: true
+            },
+            {
+                id: "junior",
+                rank: "#7",
+                name: "Junior Giti",
+                count: "142 filime na series",
+                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80",
+                initials: "JG",
+                avatarBg: "bg-indigo-600",
+                verified: true
+            },
+            {
+                id: "savimbi",
+                rank: "#8",
+                name: "Savimbi",
+                count: "118 filime na series",
+                image: "", // Uses S initials avatar
+                initials: "S",
+                avatarBg: "bg-gradient-to-br from-purple-600 to-violet-900",
+                verified: true
+            }
+        ];
+
+        /**
+         * 2. MOVIES & SERIES CATALOG
+         */
+        const catalog = [
+            {
+                id: 1,
+                title: "Outer Banks",
+                type: "series",
+                interpreterId: "sankara",
+                interpreterName: "Sankara Da Premier",
+                poster: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                episodes: ["Ep 1", "Ep 2", "Ep 3", "Ep 4", "Ep 5", "Ep 6"],
+                description: "Itsinda ry'urubyiruko rishakisha zahabu yabuze mu nyanja mu gihe bahigwa n'abantu bakomeye bafite intwaro."
+            },
+            {
+                id: 2,
+                title: "Fall 2: Deadpoint",
+                type: "movie",
+                interpreterId: "perfect",
+                interpreterName: "Perfect",
+                poster: "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "Abakobwa babiri bakunda kurira imisozi miremire bisanga baheze hejuru y'umunara w'itumanaho utagikora."
+            },
+            {
+                id: 3,
+                title: "Kung Fu Soccer",
+                type: "movie",
+                interpreterId: "rocky",
+                interpreterName: "Rocky Kimomo",
+                poster: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "Abahanga mu mikino njyarugamba ya Kung Fu bahuza imbaraga bagakora ikipe y'umupira w'amaguru idatsindwa."
+            },
+            {
+                id: 4,
+                title: "John Wick: Chapter 4",
+                type: "movie",
+                interpreterId: "rocky",
+                interpreterName: "Rocky Kimomo",
+                poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "John Wick abona inzira yo gutsinda High Table, ariko agomba guhangana n'umwanzi mushya ku isi yose."
+            },
+            {
+                id: 5,
+                title: "Extraction 2",
+                type: "movie",
+                interpreterId: "bthegreat",
+                interpreterName: "B The Great",
+                poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "Tyler Rake agaruka mu butumwa bukomeye bwo gukura umuryango w'umuherwe muri gereza irinzwe cyane."
+            },
+            {
+                id: 6,
+                title: "Money Heist (La Casa de Papel)",
+                type: "series",
+                interpreterId: "gaheza",
+                interpreterName: "Gaheza Simba",
+                poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                episodes: ["Ep 1", "Ep 2", "Ep 3", "Ep 4", "Ep 5"],
+                description: "Umugabo w'umuhanga witwa Professor ategura ubujura bukomeye mu nzu ikora amafaranga ya Espagne."
+            },
+            {
+                id: 7,
+                title: "The Equalizer 3",
+                type: "movie",
+                interpreterId: "kim",
+                interpreterName: "Kim",
+                poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "Robert McCall ajya gutura mu majyepfo y'Ubutaliyani ariko asanga inshuti ze zikandamizwa n'aba-Mafia."
+            },
+            {
+                id: 8,
+                title: "Prison Break",
+                type: "series",
+                interpreterId: "junior",
+                interpreterName: "Junior Giti",
+                poster: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                episodes: ["Ep 1", "Ep 2", "Ep 3", "Ep 4"],
+                description: "Michael Scofield yishyira muri gereza kugira ngo atorokeshe mukuru we wahamijwe icyaha atakoze."
+            },
+            {
+                id: 9,
+                title: "Fast X",
+                type: "movie",
+                interpreterId: "savimbi",
+                interpreterName: "Savimbi",
+                poster: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                description: "Dom Toretto n'umuryango we bahangana n'umwanzi mushya wifuza kwihorera ku byabaye mu myaka yashize."
+            },
+            {
+                id: 10,
+                title: "Squid Game",
+                type: "series",
+                interpreterId: "rocky",
+                interpreterName: "Rocky Kimomo",
+                poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=600&q=80",
+                videoUrl: "",
+                episodes: ["Ep 1", "Ep 2", "Ep 3", "Ep 4", "Ep 5"],
+                description: "Abantu bafite amadeni menshi bemera kwitabira imikino y'abana ishobora kubaviramo urupfu."
+            }
+        ];
+
+        // Saved Library State
+        let savedIds = JSON.parse(localStorage.getItem('bevo_library') || '[]');
+
+        // ==================== UI CARD BUILDERS ====================
+
+        /**
+         * Builds the Ranked Interpreter Card (2-column dark card with top-right crimson rank & green check)
+         */
+        function renderInterpreterCard(person) {
+            const avatarMarkup = person.image
+                ? `<img src="${person.image}" alt="${person.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-slate-700/80 shadow-md">
+                   <div class="hidden w-16 h-16 sm:w-20 sm:h-20 rounded-full ${person.avatarBg} items-center justify-center text-white font-extrabold text-xl shadow-md">${person.initials}</div>`
+                : `<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full ${person.avatarBg} flex items-center justify-center text-white font-extrabold text-xl shadow-md">${person.initials}</div>`;
+
+            const greenBadge = person.verified
+                ? `<span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-slate-950 text-[9px] shrink-0" title="Verified"><i class="fa-solid fa-check font-black"></i></span>`
+                : '';
+
+            return `
+                <div onclick="selectInterpreter('${person.id}')" class="relative bg-slateCard hover:bg-slateHover border border-slate-800/90 rounded-2xl p-4 cursor-pointer active:scale-[0.98] transition flex flex-col justify-between shadow-lg">
+                    <!-- Top-Right Rank Number in Crimson Red -->
+                    <span class="absolute top-3 right-3.5 text-xs font-extrabold text-crimson">${person.rank}</span>
+
+                    <!-- Circular Avatar / Initials -->
+                    <div class="mb-3.5 mt-1">
+                        ${avatarMarkup}
+                    </div>
+
+                    <!-- Interpreter Name + Green Verification Check + Count -->
+                    <div>
+                        <h3 class="text-white font-bold text-sm sm:text-base leading-snug flex items-center gap-1.5 flex-wrap">
+                            <span>${person.name}</span>
+                            ${greenBadge}
+                        </h3>
+                        <p class="text-slate-400 text-xs mt-1.5 font-medium">${person.count}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Builds Movie / Series Card
+         */
+        function renderMediaCard(item) {
+            const isSaved = savedIds.includes(item.id);
+            const tagBg = item.type === 'series' ? 'bg-amber-500 text-slate-950' : 'bg-crimson text-white';
+            const tagLabel = item.type === 'series' ? 'Series' : 'Movie';
+
+            return `
+                <div class="group bg-slateCard border border-slate-800/90 rounded-2xl overflow-hidden flex flex-col shadow-md hover:border-slate-700 transition">
+                    <div onclick="openPlayer(${item.id})" class="relative aspect-[2/3] w-full bg-slate-900 overflow-hidden cursor-pointer">
+                        <img src="${item.poster}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slateCard via-transparent to-black/40"></div>
+
+                        <span class="absolute top-2.5 left-2.5 ${tagBg} text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md shadow">
+                            ${tagLabel}
+                        </span>
+
+                        <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition">
+                            <div class="w-11 h-11 rounded-full bg-crimson/90 text-white flex items-center justify-center shadow-lg shadow-rose-600/40 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 flex-1 flex items-start justify-between gap-2">
+                        <div onclick="openPlayer(${item.id})" class="cursor-pointer min-w-0">
+                            <h3 class="text-white font-bold text-xs sm:text-sm truncate">${item.title}</h3>
+                            <p class="text-[11px] text-slate-400 mt-1 truncate">
+                                By <span class="text-slate-200 font-medium">${item.interpreterName}</span>
+                            </p>
+                        </div>
+                        <button onclick="toggleLibrary(${item.id})" aria-label="Save" class="text-slate-400 hover:text-crimson p-1 shrink-0 transition">
+                            <i class="${isSaved ? 'fa-solid fa-bookmark text-crimson' : 'fa-regular fa-bookmark'} text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==================== INITIALIZATION ====================
+        function initBevoFilms() {
+            // 1. Home Top Interpreters Strip
+            document.getElementById('homeInterpretersRow').innerHTML = interpreters.map(p => `
+                <div onclick="switchTab('interpret'); selectInterpreter('${p.id}')" class="shrink-0 w-24 bg-slateCard border border-slate-800 rounded-2xl p-2.5 flex flex-col items-center text-center cursor-pointer active:scale-95 transition">
+                    <div class="relative mb-1.5">
+                        ${p.image
+                            ? `<img src="${p.image}" alt="${p.name}" class="w-12 h-12 rounded-full object-cover border border-slate-700">`
+                            : `<div class="w-12 h-12 rounded-full ${p.avatarBg} flex items-center justify-center text-white font-bold text-sm">${p.initials}</div>`
+                        }
+                        <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 text-slate-950 text-[8px] flex items-center justify-center border border-slateCard">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <span class="text-[11px] font-bold text-white line-clamp-1 w-full">${p.name}</span>
+                    <span class="text-[10px] text-crimson font-extrabold">${p.rank}</span>
+                </div>
+            `).join('');
+
+            // 2. Home All Releases
+            document.getElementById('homeMediaGrid').innerHTML = catalog.map(renderMediaCard).join('');
+
+            // 3. Movies Tab
+            const moviesList = catalog.filter(c => c.type === 'movie');
+            document.getElementById('moviesBadgeCount').textContent = `${moviesList.length} Movies`;
+            document.getElementById('moviesTabGrid').innerHTML = moviesList.map(renderMediaCard).join('');
+
+            // 4. Series Tab
+            const seriesList = catalog.filter(c => c.type === 'series');
+            document.getElementById('seriesBadgeCount').textContent = `${seriesList.length} Series`;
+            document.getElementById('seriesTabGrid').innerHTML = seriesList.map(renderMediaCard).join('');
+
+            // 5. Interpret Tab (2-Column Ranked Grid)
+            document.getElementById('interpretRankedGrid').innerHTML = interpreters.map(renderInterpreterCard).join('');
+
+            // 6. Library Tab
+            refreshLibraryUI();
+        }
+
+        // ==================== TAB NAVIGATION ====================
+        function switchTab(tab) {
+            document.getElementById('view-search').classList.add('hidden');
+            const views = ['home', 'movies', 'series', 'interpret', 'library'];
+
+            views.forEach(v => {
+                document.getElementById(`view-${v}`).classList.add('hidden');
+                const btn = document.getElementById(`tab-btn-${v}`);
+                btn.classList.remove('text-crimson', 'font-bold');
+                btn.classList.add('text-slate-400', 'font-medium');
+            });
+
+            document.getElementById(`view-${tab}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            activeBtn.classList.remove('text-slate-400', 'font-medium');
+            activeBtn.classList.add('text-crimson', 'font-bold');
+
+            if (tab === 'interpret') {
+                resetInterpreterView();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ==================== INTERPRET FILTERING ====================
+        function selectInterpreter(interpreterId) {
+            const person = interpreters.find(i => i.id === interpreterId);
+            if (!person) return;
+
+            const personMedia = catalog.filter(m => m.interpreterId === interpreterId);
+
+            document.getElementById('interpretDefaultHeader').classList.add('hidden');
+            document.getElementById('interpretRankedGrid').classList.add('hidden');
+            document.getElementById('interpretDetailView').classList.remove('hidden');
+
+            const avatar = person.image
+                ? `<img src="${person.image}" alt="${person.name}" class="w-16 h-16 rounded-full object-cover border-2 border-crimson">`
+                : `<div class="w-16 h-16 rounded-full ${person.avatarBg} flex items-center justify-center text-white font-extrabold text-xl">${person.initials}</div>`;
+
+            document.getElementById('selectedInterpreterCard').innerHTML = `
+                ${avatar}
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-extrabold text-crimson bg-rose-950/60 border border-rose-800/40 px-2 py-0.5 rounded">${person.rank}</span>
+                        <h2 class="text-lg font-extrabold text-white flex items-center gap-1.5">
+                            ${person.name}
+                            <span class="w-4 h-4 rounded-full bg-emerald-500 text-slate-950 text-[9px] inline-flex items-center justify-center"><i class="fa-solid fa-check font-black"></i></span>
+                        </h2>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">${person.count}</p>
+                </div>
+            `;
+
+            document.getElementById('filteredMediaCount').textContent = `${personMedia.length} ziriho`;
+            document.getElementById('filteredInterpreterMediaGrid').innerHTML = personMedia.length > 0
+                ? personMedia.map(renderMediaCard).join('')
+                : `<p class="col-span-full text-sm text-slate-400 py-6 text-center">Nta filime ziri kuri uru rutonde ubu.</p>`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetInterpreterView() {
+            document.getElementById('interpretDefaultHeader').classList.remove('hidden');
+            document.getElementById('interpretRankedGrid').classList.remove('hidden');
+            document.getElementById('interpretDetailView').classList.add('hidden');
+        }
+
+        // ==================== LIBRARY (BOOKMARKS) ====================
+        function toggleLibrary(id) {
+            if (savedIds.includes(id)) {
+                savedIds = savedIds.filter(item => item !== id);
+            } else {
+                savedIds.push(id);
+            }
+            localStorage.setItem('bevo_library', JSON.stringify(savedIds));
+            refreshLibraryUI();
+            
+            // Re-render grids so bookmark icon states update immediately
+            document.getElementById('homeMediaGrid').innerHTML = catalog.map(renderMediaCard).join('');
+            document.getElementById('moviesTabGrid').innerHTML = catalog.filter(c => c.type === 'movie').map(renderMediaCard).join('');
+            document.getElementById('seriesTabGrid').innerHTML = catalog.filter(c => c.type === 'series').map(renderMediaCard).join('');
+        }
+
+        function refreshLibraryUI() {
+            document.getElementById('headerSavedCount').textContent = savedIds.length;
+            document.getElementById('libraryBadgeCount').textContent = `${savedIds.length} Saved`;
+
+            const savedItems = catalog.filter(c => savedIds.includes(c.id));
+            const grid = document.getElementById('libraryTabGrid');
+            const empty = document.getElementById('libraryEmptyState');
+
+            if (savedItems.length > 0) {
+                grid.innerHTML = savedItems.map(renderMediaCard).join('');
+                empty.classList.add('hidden');
+            } else {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // ==================== SEARCH ====================
+        function toggleSearchBar() {
+            const box = document.getElementById('searchBarBox');
+            const input = document.getElementById('globalSearchInput');
+            box.classList.toggle('hidden');
+            if (!box.classList.contains('hidden')) {
+                input.focus();
+            } else {
+                clearGlobalSearch();
+            }
+        }
+
+        function handleGlobalSearch(val) {
+            const q = val.trim().toLowerCase();
+            const clearBtn = document.getElementById('clearSearchIcon');
+            const searchView = document.getElementById('view-search');
+            const views = ['home', 'movies', 'series', 'interpret', 'library'];
+
+            if (!q) {
+                clearBtn.classList.add('hidden');
+                searchView.classList.add('hidden');
+                const activeNav = document.querySelector('.bottom-nav-btn.text-crimson');
+                const currentTab = activeNav ? activeNav.id.replace('tab-btn-', '') : 'home';
+                document.getElementById(`view-${currentTab}`).classList.remove('hidden');
+                return;
+            }
+
+            clearBtn.classList.remove('hidden');
+            views.forEach(v => document.getElementById(`view-${v}`).classList.add('hidden'));
+            searchView.classList.remove('hidden');
+
+            const matchedPeople = interpreters.filter(p => p.name.toLowerCase().includes(q));
+            const matchedMedia = catalog.filter(m =>
+                m.title.toLowerCase().includes(q) ||
+                m.interpreterName.toLowerCase().includes(q)
+            );
+
+            document.getElementById('searchInterpretersGrid').innerHTML = matchedPeople.map(renderInterpreterCard).join('');
+            document.getElementById('searchMediaGrid').innerHTML = matchedMedia.map(renderMediaCard).join('');
+
+            const empty = document.getElementById('searchEmptyState');
+            if (matchedPeople.length === 0 && matchedMedia.length === 0) {
+                empty.classList.remove('hidden');
+            } else {
+                empty.classList.add('hidden');
+            }
+        }
+
+        function clearGlobalSearch() {
+            const input = document.getElementById('globalSearchInput');
+            input.value = '';
+            handleGlobalSearch('');
+        }
+
+        // ==================== VIDEO PLAYER MODAL ====================
+        function openPlayer(id) {
+            const item = catalog.find(m => m.id === id);
+            if (!item) return;
+
+            document.getElementById('playerMediaTitle').textContent = item.title;
+            document.getElementById('playerTypeTag').textContent = item.type === 'series' ? 'Series' : 'Movie';
+            document.getElementById('playerInterpreterTag').textContent = item.interpreterName;
+            document.getElementById('playerDescriptionText').textContent = item.description;
+            document.getElementById('playerBackdropImg').src = item.poster;
+
+            const saveBtn = document.getElementById('playerSaveBtn');
+            const isSaved = savedIds.includes(item.id);
+            saveBtn.innerHTML = isSaved
+                ? `<i class="fa-solid fa-bookmark text-crimson mr-1"></i> Biri muri Library`
+                : `<i class="fa-regular fa-bookmark mr-1"></i> Bika muri Library`;
+            saveBtn.onclick = () => {
+                toggleLibrary(item.id);
+                openPlayer(item.id);
+            };
+
+            const iframe = document.getElementById('playerIframe');
+            const fallback = document.getElementById('playerFallbackBox');
+
+            if (item.videoUrl && item.videoUrl.trim() !== "") {
+                iframe.src = item.videoUrl;
+                iframe.classList.remove('hidden');
+                fallback.classList.add('hidden');
+            } else {
+                iframe.src = "";
+                iframe.classList.add('hidden');
+                fallback.classList.remove('hidden');
+                document.getElementById('playerStatusMsg').textContent = `Kanda Play urebe "${item.title}"`;
+            }
+
+            const epSec = document.getElementById('playerEpisodesSection');
+            const epBtns = document.getElementById('playerEpisodesButtons');
+            if (item.type === 'series' && item.episodes) {
+                epSec.classList.remove('hidden');
+                epBtns.innerHTML = item.episodes.map((ep, idx) => `
+                    <button onclick="chooseEpisode('${ep}', this)" class="ep-pill px-3.5 py-1.5 rounded-lg text-xs font-bold border ${idx === 0 ? 'bg-crimson border-crimson text-white' : 'bg-slate-900 border-slate-700 text-slate-300 hover:border-slate-500'} transition">
+                        ${ep}
+                    </button>
+                `).join('');
+            } else {
+                epSec.classList.add('hidden');
+            }
+
+            document.getElementById('playerModal').classList.remove('hidden');
+        }
+
+        function chooseEpisode(ep, el) {
+            document.querySelectorAll('.ep-pill').forEach(b => {
+                b.className = "ep-pill px-3.5 py-1.5 rounded-lg text-xs font-bold border bg-slate-900 border-slate-700 text-slate-300 hover:border-slate-500 transition";
+            });
+            el.className = "ep-pill px-3.5 py-1.5 rounded-lg text-xs font-bold border bg-crimson border-crimson text-white transition";
+            document.getElementById('playerStatusMsg').textContent = `Iri gukina: ${ep}`;
+        }
+
+        function startStreamSimulation() {
+            const msg = document.getElementById('playerStatusMsg');
+            msg.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-crimson mr-1.5"></i> Iri gufungura amashusho (HD)...`;
+            setTimeout(() => {
+                msg.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-circle-play mr-1"></i> Video yatangiye!</span>`;
+            }, 800);
+        }
+
+        function closePlayer() {
+            document.getElementById('playerModal').classList.add('hidden');
+            document.getElementById('playerIframe').pause?.(); document.getElementById('playerIframe').removeAttribute("src"); document.getElementById('playerIframe').load?.();
+        }
+
+        window.addEventListener('DOMContentLoaded', initBevoFilms);
+    </script>
+
+<!-- BevoFilms cloud catalog integration. Existing layout and local catalog are preserved. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./bevo-config.js"></script>
+<script>
+(async function loadBevoCloudCatalog() {
+  const cfg = window.BEVO_CONFIG || {};
+  if (!cfg.supabaseUrl || !cfg.supabaseAnonKey ||
+      cfg.supabaseUrl.includes("YOUR_") || cfg.supabaseAnonKey.includes("YOUR_")) return;
+
+  try {
+    const client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    const { data, error } = await client.from("bevo_media").select("*").eq("published", true).order("created_at", {ascending:false});
+    if (error) throw error;
+
+    // Add uploaded items without removing the original catalog entries.
+    for (const row of (data || [])) {
+      if (catalog.some(item => item.cloudId === row.id)) continue;
+      catalog.push({
+        id: "cloud-" + row.id,
+        cloudId: row.id,
+        title: row.title,
+        type: row.type,
+        interpreterId: row.interpreter_id || "rocky",
+        interpreterName: row.interpreter_name || "BevoFilms",
+        poster: row.image_url || "https://images.unsplash.com/photo-1489599849927-2ee91c0b7b2a?auto=format&fit=crop&w=600&q=80",
+        videoUrl: row.telegram_file_id ? ("/telegram-file?file_id=" + encodeURIComponent(row.telegram_file_id)) : "",
+        episodes: row.episodes || [],
+        description: row.description || ""
+      });
+    }
+
+    // Re-render the existing sections using the original card builders.
+    document.getElementById("homeMediaGrid").innerHTML = catalog.map(renderMediaCard).join("");
+    const movies = catalog.filter(x => x.type === "movie");
+    const series = catalog.filter(x => x.type === "series");
+    document.getElementById("moviesBadgeCount").textContent = `${movies.length} Movies`;
+    document.getElementById("moviesTabGrid").innerHTML = movies.map(renderMediaCard).join("");
+    document.getElementById("seriesBadgeCount").textContent = `${series.length} Series`;
+    document.getElementById("seriesTabGrid").innerHTML = series.map(renderMediaCard).join("");
+  } catch (e) {
+    console.error("BevoFilms cloud catalog:", e);
+  }
+})();
+</script>
+
+</body>
+</html>

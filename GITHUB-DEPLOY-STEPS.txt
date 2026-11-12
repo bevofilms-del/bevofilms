@@ -1,0 +1,5 @@
+1. Upload all files in this folder to a new GitHub repository.
+2. Configure Supabase using supabase-schema.sql and bevo-config.js.
+3. Set the five Netlify environment variables described in README.md.
+4. Connect the GitHub repository to Netlify and deploy.
+5. Open /admin.html to log in and upload.
